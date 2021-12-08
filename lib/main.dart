@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const title = 'Todo';
+    const title = 'Todo List';
 
     return MaterialApp(
       title: title,
