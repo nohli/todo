@@ -36,7 +36,8 @@ class TodoList {
   }
 
   TodoList removeTodo(int id) {
-    todos.removeAt(id - 1);
+    final index = todos.indexWhere((todo) => todo.id == id);
+    todos.removeAt(index);
     return this;
   }
 

@@ -6,6 +6,7 @@ This is a very simple todo list app implementing the following features:
 - Automatically save and load entries with a persistent [Hive](https://pub.dev/packages/hive) storage on the device
 - Display todo list entries
 - Create new entries
+- Swipe to delete entries
 - Toggle entries as completed/uncompleted
 - Light mode/dark mode
 - Sound null safety

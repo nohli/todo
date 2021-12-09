@@ -13,14 +13,17 @@ class TodoItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final id = todo.id;
+
     return Card(
       child: DismissibleWidget(
-        id: todo.id,
+        id: id,
+        onDismissed: () => provider.removeTodo(id),
         child: ListTile(
           title: Text(todo.title),
           leading: Checkbox(
             value: todo.completed,
-            onChanged: (_) => provider.toggleTodo(todo.id),
+            onChanged: (_) => provider.toggleTodo(id),
           ),
           trailing: const Icon(
             Icons.drag_handle_rounded,
