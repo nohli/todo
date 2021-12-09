@@ -1,7 +1,7 @@
 import 'package:todo/todo/models/todo_item.dart';
 
 class TodoList {
-  List<TodoItem> todos;
+  final List<TodoItem> todos;
 
   TodoList(this.todos);
 
@@ -14,7 +14,6 @@ class TodoList {
       final todo = TodoItem.fromJson(item);
       todos.add(todo);
     }
-
     return TodoList(todos);
   }
 
@@ -24,13 +23,12 @@ class TodoList {
     for (final todo in todos) {
       list.add(todo.toJson());
     }
-
     return list;
   }
 
   TodoList addTodoItem(String title) {
     final todo = TodoItem(title: title);
-    todos = [todo, ...todos];
+    todos.insert(0, todo);
     return this;
   }
 

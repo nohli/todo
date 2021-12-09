@@ -1,6 +1,6 @@
 class TodoItem {
-  int userId;
-  int id;
+  final int userId;
+  final int id;
   String title;
   bool completed;
 
@@ -40,7 +40,5 @@ class TodoItem {
     };
   }
 
-  void toggle() {
-    completed = !completed;
-  }
+  void toggle() => completed = !completed;
 }
