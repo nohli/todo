@@ -26,7 +26,18 @@ class TodosProvider extends StateNotifier<TodoList> {
       state = savedList;
     } else {
       state = await repository.getTodoList();
+      _saveTodoList();
     }
+  }
+
+  Future<void> _saveTodoList() async {
+    await storage.save(state);
+    await repository.postTodoList(state);
+  }
+
+  void _refreshState() {
+    _saveTodoList();
+    state = TodoList(state.todos);
   }
 
   void addTodo(String title) {
@@ -49,15 +60,5 @@ class TodosProvider extends StateNotifier<TodoList> {
   void reorderTodo(int oldIndex, int newIndex) {
     state = state.reorderTodo(oldIndex, newIndex);
     _refreshState();
-  }
-
-  void _refreshState() {
-    _saveTodoList();
-    state = TodoList(state.todos);
-  }
-
-  Future<void> _saveTodoList() async {
-    await storage.save(state);
-    await repository.postTodoList(state);
   }
 }
