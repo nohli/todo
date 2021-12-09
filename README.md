@@ -3,6 +3,7 @@
 This is a very simple todo list app implementing the following features:
 
 - HTTP-download and parsing of placeholder todos from [JSONPlaceholder](https://jsonplaceholder.typicode.com/todos)
+- Automatically save and load entries with a persistent [Hive](https://pub.dev/packages/hive) storage on the device
 - Display todo list entries
 - Create new entries
 - Toggle entries as completed/uncompleted
