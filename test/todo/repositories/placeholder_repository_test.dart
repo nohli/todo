@@ -3,53 +3,15 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
-import 'package:todo/todo/models/todo_item.dart';
 import 'package:todo/todo/models/todo_list.dart';
 import 'package:todo/todo/repositories/placeholder_repository.dart';
 
+import '../object_mothers/todo_list_mother.dart';
+
 void main() {
   test('Returns correct TodoList', () async {
-    const map = [
-      {
-        'userId': 1,
-        'id': 1,
-        'title': 'delectus aut autem',
-        'completed': false,
-      },
-      {
-        'userId': 1,
-        'id': 2,
-        'title': 'quis ut nam facilis et officia qui',
-        'completed': false,
-      },
-      {
-        'userId': 2,
-        'id': 3,
-        'title': 'fugiat veniam minus',
-        'completed': true,
-      }
-    ];
-
-    final expectedTodoList = TodoList([
-      TodoItem(
-        userId: 1,
-        id: 1,
-        title: 'delectus aut autem',
-        completed: false,
-      ),
-      TodoItem(
-        userId: 1,
-        id: 2,
-        title: 'quis ut nam facilis et officia qui',
-        completed: false,
-      ),
-      TodoItem(
-        userId: 2,
-        id: 3,
-        title: 'fugiat veniam minus',
-        completed: true,
-      ),
-    ]);
+    const map = TodoListMother.map;
+    final expectedTodoList = TodoListMother.todoList;
 
     final json = jsonEncode(map);
 
