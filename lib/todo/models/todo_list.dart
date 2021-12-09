@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:todo/todo/models/todo_item.dart';
 
 class TodoList {
@@ -63,4 +64,14 @@ class TodoList {
   bool get isEmpty => todos.isEmpty;
 
   bool get isNotEmpty => todos.isNotEmpty;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TodoList &&
+          runtimeType == other.runtimeType &&
+          listEquals(todos, other.todos);
+
+  @override
+  int get hashCode => todos.hashCode;
 }

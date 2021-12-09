@@ -37,4 +37,18 @@ class TodoItem {
   }
 
   void toggle() => completed = !completed;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TodoItem &&
+          runtimeType == other.runtimeType &&
+          userId == other.userId &&
+          id == other.id &&
+          title == other.title &&
+          completed == other.completed;
+
+  @override
+  int get hashCode =>
+      userId.hashCode ^ id.hashCode ^ title.hashCode ^ completed.hashCode;
 }
