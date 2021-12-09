@@ -1,5 +1,4 @@
 import 'package:todo/todo/interfaces/storage_repository.dart';
-
 import 'package:todo/todo/models/todo_list.dart';
 
 class FakeHiveRepository implements StorageRepository {
