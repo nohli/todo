@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:todo/todo/models/todo_list.dart';
 
 class TodoRepository {
-  Future<TodoList> getTodos() async {
+  static Future<TodoList> getTodos() async {
     const url = 'https://jsonplaceholder.typicode.com/todos';
 
     final response = await http.get(Uri.parse(url));
@@ -17,7 +17,7 @@ class TodoRepository {
       final TodoList todos = TodoList.fromJson(list);
       return todos;
     } else {
-      return TodoList([]);
+      return TodoList.empty();
     }
   }
 }
