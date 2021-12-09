@@ -30,7 +30,7 @@ class TodoList {
 
   TodoList addTodoItem(String title) {
     final todo = TodoItem(title: title);
-    todos.add(todo);
+    todos = [todo, ...todos];
     return this;
   }
 
