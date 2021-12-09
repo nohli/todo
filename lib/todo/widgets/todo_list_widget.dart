@@ -13,7 +13,7 @@ class TodoListWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final todos = ref.watch(todosProvider).todos;
     final provider = ref.read(todosProvider.notifier);
-    if (todos.isEmpty) provider.getTodoList();
+    if (todos.isEmpty) provider.loadTodoList();
 
     return SafeArea(
       child: Column(
