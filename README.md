@@ -11,8 +11,9 @@ This is a simple app implementing the following features:
 - Drag entry to manually sort
 - Light mode/dark mode
 - Sound null safety
-- Unit tests, widget tests and integration tests
 
 State management via [Riverpod](https://pub.dev/packages/riverpod).
+
+The tests include unit tests, widget tests and integration tests.
 
 <img src="https://user-images.githubusercontent.com/43643339/145316166-a369d7eb-9213-438f-9b50-946597dd6228.png" width="300"> <img src="https://user-images.githubusercontent.com/43643339/145317331-68d9ed93-4af6-46bc-ba8e-7f9fddc80ee7.png" width="300">
