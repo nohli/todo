@@ -7,6 +7,7 @@ import 'package:http/http.dart';
 import 'package:http/testing.dart';
 
 import 'package:todo/main.dart';
+import 'package:todo/todo/models/todo_list.dart';
 import 'package:todo/todo/providers/todo_provider.dart';
 import 'package:todo/todo/repositories/placeholder_repository.dart';
 import 'package:todo/todo/widgets/todo_list_widget.dart';
@@ -15,11 +16,12 @@ import '../fake_repositories/fake_hive_repository.dart';
 import '../object_mothers/todo_list_mother.dart';
 
 void main() {
-  testWidgets(
-      'Provider loads TodoList from repository, widget displays first entry',
-      (tester) async {
+  late TodoList expectedTodoList;
+  late Widget widget;
+
+  setUp(() async {
     const map = TodoListMother.map;
-    final expectedTodoList = TodoListMother.todoList;
+    expectedTodoList = TodoListMother.todoList;
 
     final json = jsonEncode(map);
 
@@ -32,7 +34,7 @@ void main() {
       repository: PlaceholderRepository(mockClient),
     );
 
-    final widget = ProviderScope(
+    widget = ProviderScope(
       overrides: [
         todosProvider.overrideWithValue(providerOverride),
       ],
@@ -49,7 +51,10 @@ void main() {
         ),
       ),
     );
-
+  });
+  testWidgets(
+      'Provider loads TodoList from repository, widget displays first entry',
+      (tester) async {
     await tester.pumpWidget(widget);
     await tester.pumpAndSettle();
 
