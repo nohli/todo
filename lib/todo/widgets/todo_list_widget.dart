@@ -21,14 +21,20 @@ class TodoListWidget extends ConsumerWidget {
         children: [
           AddTodoItemWidget(provider: provider),
           Expanded(
-            child: ListView.builder(
+            child: ReorderableListView.builder(
               padding: const EdgeInsets.fromLTRB(4, 6, 4, 6),
               itemCount: todos.length,
               itemBuilder: (context, index) {
+                final id = todos[index].id;
+
                 return TodoItemWidget(
                   todos[index],
+                  key: ValueKey(id),
                   provider: provider,
                 );
+              },
+              onReorder: (oldIndex, newIndex) {
+                provider.reorderTodo(oldIndex, newIndex);
               },
             ),
           ),

@@ -46,6 +46,11 @@ class TodosProvider extends StateNotifier<TodoList> {
     refreshState();
   }
 
+  void reorderTodo(int oldIndex, int newIndex) {
+    state = state.reorderTodo(oldIndex, newIndex);
+    refreshState();
+  }
+
   void refreshState() {
     saveTodoList();
     state = TodoList(state.todos);

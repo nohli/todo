@@ -8,6 +8,7 @@ This is a very simple todo list app implementing the following features:
 - Create new entries
 - Swipe to delete entries
 - Toggle entries as completed/uncompleted
+- Drag entry to manually sort
 - Light mode/dark mode
 - Sound null safety
 

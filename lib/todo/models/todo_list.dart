@@ -51,6 +51,15 @@ class TodoList {
     return this;
   }
 
+  TodoList reorderTodo(int oldIndex, int newIndex) {
+    final todo = todos.removeAt(oldIndex);
+    if (newIndex > oldIndex) {
+      newIndex--;
+    }
+    todos.insert(newIndex, todo);
+    return this;
+  }
+
   bool get isEmpty => todos.isEmpty;
 
   bool get isNotEmpty => todos.isNotEmpty;

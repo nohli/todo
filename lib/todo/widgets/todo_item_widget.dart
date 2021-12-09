@@ -17,7 +17,7 @@ class TodoItemWidget extends StatelessWidget {
 
     return Card(
       child: DismissibleWidget(
-        id: id,
+        key: key,
         onDismissed: () => provider.removeTodo(id),
         child: ListTile(
           title: Text(todo.title),
