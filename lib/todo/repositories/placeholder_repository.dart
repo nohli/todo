@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:todo/todo/models/todo_list.dart';
 
-class TodoRepository {
+class PlaceholderRepository {
   Future<TodoList> getTodoList() async {
     const url = 'https://jsonplaceholder.typicode.com/todos';
 
