@@ -40,6 +40,7 @@ class PlaceholderRepository {
     if (statusCode == HttpStatus.created) {
       return;
     }
+
     if (kDebugMode) {
       throw Exception(
         'Failed to send todo list to api. Statuscode: $statusCode',

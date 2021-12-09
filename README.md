@@ -3,12 +3,12 @@
 This is a simple app implementing the following features:
 
 - HTTP-download and parsing of placeholder todos from [JSONPlaceholder](https://jsonplaceholder.typicode.com/todos)
-- Automatically save and load entries with a persistent [Hive](https://pub.dev/packages/hive) storage on the device
+- Automatically save and load entries to/from the device with a persistent [Hive](https://pub.dev/packages/hive) storage
 - Display todo list entries
 - Create new entries
 - Swipe to delete entries
-- Toggle entries as completed/uncompleted
-- Drag entry to manually sort
+- Toggle entries as completed/not completed
+- Drag entries to manually sort
 - Light mode/dark mode
 - Sound null safety
 

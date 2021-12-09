@@ -5,8 +5,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
-import 'package:todo/main.dart';
 
+import 'package:todo/main.dart';
 import 'package:todo/todo/providers/todo_provider.dart';
 import 'package:todo/todo/repositories/placeholder_repository.dart';
 import 'package:todo/todo/widgets/todo_list_widget.dart';
