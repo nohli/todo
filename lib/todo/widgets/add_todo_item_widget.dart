@@ -36,7 +36,7 @@ class _AddTodoItemWidgetState extends State<AddTodoItemWidget> {
             child: TextField(
               textAlign: TextAlign.center,
               decoration: const InputDecoration(
-                hintText: 'Tap to add new item',
+                hintText: 'Tap to add a new item',
               ),
               controller: _controller,
               onChanged: (_) => setState(() {}),
