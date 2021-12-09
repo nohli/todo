@@ -1,5 +1,6 @@
 import 'package:http/http.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:todo/todo/interfaces/storage_repository.dart';
 
 import 'package:todo/todo/models/todo_list.dart';
 import 'package:todo/todo/repositories/hive_repository.dart';
@@ -15,7 +16,7 @@ final todosProvider = StateNotifierProvider<TodosProvider, TodoList>(
 );
 
 class TodosProvider extends StateNotifier<TodoList> {
-  final HiveRepository storage;
+  final StorageRepository storage;
   final PlaceholderRepository repository;
 
   TodosProvider({required this.storage, required this.repository})
