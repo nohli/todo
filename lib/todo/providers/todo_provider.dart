@@ -12,24 +12,24 @@ final todosProvider = StateNotifierProvider<TodosProvider, TodoList>(
 class TodosProvider extends StateNotifier<TodoList> {
   TodosProvider() : super(TodoList.empty());
 
-  Future<void> getTodos() async {
-    state = await TodoRepository.getTodos();
+  Future<void> getTodoList() async {
+    state = await TodoRepository.getTodoList();
   }
 
   void addTodo(String title) {
     if (title.isNotEmpty) {
-      state = state.addTodoItem(title);
+      state = state.addTodo(title);
       refreshState();
     }
   }
 
   void removeTodo(int id) {
-    state = state.removeTodoItem(id);
+    state = state.removeTodo(id);
     refreshState();
   }
 
   void toggleTodo(int id) {
-    state = state.toggleTodoItem(id);
+    state = state.toggleTodo(id);
     refreshState();
   }
 

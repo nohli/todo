@@ -4,23 +4,10 @@ class TodoItem {
   String title;
   bool completed;
 
-  TodoItem({
-    int? userId,
-    int? id,
-    required this.title,
-    bool? completed,
-  })  : userId = userId ?? 1,
+  TodoItem({int? userId, int? id, required this.title, bool? completed})
+      : userId = userId ?? 1,
         id = id ?? DateTime.now().millisecondsSinceEpoch,
         completed = completed ?? false;
-
-  TodoItem copyWith(userId, id, title, completed) {
-    return TodoItem(
-      userId: userId ?? this.userId,
-      id: id ?? this.id,
-      title: title ?? this.title,
-      completed: completed ?? this.completed,
-    );
-  }
 
   factory TodoItem.fromJson(Map<String, dynamic> map) {
     return TodoItem(
@@ -38,6 +25,15 @@ class TodoItem {
       'title': title,
       'completed': completed,
     };
+  }
+
+  TodoItem copyWith(userId, id, title, completed) {
+    return TodoItem(
+      userId: userId ?? this.userId,
+      id: id ?? this.id,
+      title: title ?? this.title,
+      completed: completed ?? this.completed,
+    );
   }
 
   void toggle() => completed = !completed;
