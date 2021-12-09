@@ -1,19 +1,32 @@
 import 'package:riverpod/riverpod.dart';
 
 import 'package:todo/todo/models/todo_list.dart';
+import 'package:todo/todo/repositories/hive_repository.dart';
 import 'package:todo/todo/repositories/todo_repository.dart';
 
 final todosProvider = StateNotifierProvider<TodosProvider, TodoList>(
   (ref) {
-    return TodosProvider();
+    return TodosProvider(
+      storage: HiveRepository(),
+      repository: TodoRepository(),
+    );
   },
 );
 
 class TodosProvider extends StateNotifier<TodoList> {
-  TodosProvider() : super(TodoList.empty());
+  final HiveRepository storage;
+  final TodoRepository repository;
+
+  TodosProvider({required this.storage, required this.repository})
+      : super(TodoList.empty());
 
   Future<void> getTodoList() async {
-    state = await TodoRepository.getTodoList();
+    final savedList = await storage.load();
+    if (savedList.isNotEmpty) {
+      state = savedList;
+    } else {
+      state = await repository.getTodoList();
+    }
   }
 
   void addTodo(String title) {
@@ -34,6 +47,15 @@ class TodosProvider extends StateNotifier<TodoList> {
   }
 
   void refreshState() {
+    saveTodoList();
     state = TodoList(state.todos);
+  }
+
+  Future<void> loadTodoList() async {
+    state = await storage.load();
+  }
+
+  Future<void> saveTodoList() async {
+    await storage.save(state);
   }
 }
