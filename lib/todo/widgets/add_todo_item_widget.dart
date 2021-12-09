@@ -48,6 +48,7 @@ class _AddTodoItemWidgetState extends State<AddTodoItemWidget> {
           ),
           if (_controller.text.isNotEmpty)
             IconButton(
+              padding: const EdgeInsets.only(right: 7),
               icon: const Icon(Icons.clear),
               onPressed: () {
                 _controller.clear();
