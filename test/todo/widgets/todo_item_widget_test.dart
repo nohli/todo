@@ -60,7 +60,6 @@ void main() {
     expect(checkbox.value, todoItem.completed);
 
     await tester.tap(finder);
-    await tester.pumpAndSettle();
 
     final tappedCheckbox = tester.firstWidget(finder) as Checkbox;
     expect(tappedCheckbox.value, !todoItem.completed);
