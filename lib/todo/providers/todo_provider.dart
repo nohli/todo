@@ -1,3 +1,4 @@
+import 'package:http/http.dart';
 import 'package:riverpod/riverpod.dart';
 
 import 'package:todo/todo/models/todo_list.dart';
@@ -8,7 +9,7 @@ final todosProvider = StateNotifierProvider<TodosProvider, TodoList>(
   (ref) {
     return TodosProvider(
       storage: HiveRepository(),
-      repository: PlaceholderRepository(),
+      repository: PlaceholderRepository(Client()),
     );
   },
 );

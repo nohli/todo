@@ -1,16 +1,20 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 import 'package:todo/todo/models/todo_list.dart';
 
 class PlaceholderRepository {
+  final Client client;
+
+  PlaceholderRepository(this.client);
+
   static const _url = 'https://jsonplaceholder.typicode.com/todos';
   final _uri = Uri.parse(_url);
 
   Future<TodoList> getTodoList() async {
-    final response = await http.get(_uri);
+    final response = await client.get(_uri);
     final statusCode = response.statusCode;
 
     if (statusCode == HttpStatus.ok) {
@@ -26,7 +30,7 @@ class PlaceholderRepository {
   }
 
   Future<void> postTodoList(TodoList list) async {
-    final response = await http.post(
+    final response = await client.post(
       _uri,
       body: list.toJson(),
     );
