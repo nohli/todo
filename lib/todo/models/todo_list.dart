@@ -5,6 +5,8 @@ class TodoList {
 
   TodoList(this.todos);
 
+  static TodoList empty() => TodoList([]);
+
   factory TodoList.fromJson(List list) {
     final todos = <TodoItem>[];
 
@@ -25,4 +27,27 @@ class TodoList {
 
     return list;
   }
+
+  TodoList addTodoItem(String title) {
+    final todo = TodoItem(title: title);
+    todos.add(todo);
+    return this;
+  }
+
+  TodoList removeTodoItem(int id) {
+    todos.removeAt(id - 1);
+    return this;
+  }
+
+  TodoList toggleTodoItem(int id) {
+    for (final todo in todos) {
+      if (todo.id == id) {
+        todo.toggle();
+        break;
+      }
+    }
+    return this;
+  }
+
+  bool isEmpty() => todos.isEmpty;
 }
