@@ -1,6 +1,6 @@
 # Todo List App
 
-This is a very simple todo list app implementing the following features:
+This is a simple app implementing the following features:
 
 - HTTP-download and parsing of placeholder todos from [JSONPlaceholder](https://jsonplaceholder.typicode.com/todos)
 - Automatically save and load entries with a persistent [Hive](https://pub.dev/packages/hive) storage on the device
@@ -11,6 +11,7 @@ This is a very simple todo list app implementing the following features:
 - Drag entry to manually sort
 - Light mode/dark mode
 - Sound null safety
+- Unit tests, widget tests and integration tests
 
 State management via [Riverpod](https://pub.dev/packages/riverpod).
 
