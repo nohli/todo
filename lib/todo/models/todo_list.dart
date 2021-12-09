@@ -32,13 +32,13 @@ class TodoList {
   TodoList addTodo(String title) {
     final todo = TodoItem(title: title);
     todos.insert(0, todo);
-    return this;
+    return TodoList(todos);
   }
 
   TodoList removeTodo(int id) {
     final index = todos.indexWhere((todo) => todo.id == id);
     todos.removeAt(index);
-    return this;
+    return TodoList(todos);
   }
 
   TodoList toggleTodo(int id) {
@@ -48,7 +48,7 @@ class TodoList {
         break;
       }
     }
-    return this;
+    return TodoList(todos);
   }
 
   TodoList reorderTodo(int oldIndex, int newIndex) {
@@ -57,7 +57,7 @@ class TodoList {
       newIndex--;
     }
     todos.insert(newIndex, todo);
-    return this;
+    return TodoList(todos);
   }
 
   bool get isEmpty => todos.isEmpty;

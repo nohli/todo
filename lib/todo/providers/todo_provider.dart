@@ -35,30 +35,25 @@ class TodosProvider extends StateNotifier<TodoList> {
     await repository.postTodoList(state);
   }
 
-  void _refreshState() {
-    _saveTodoList();
-    state = TodoList(state.todos);
-  }
-
   void addTodo(String title) {
     if (title.isNotEmpty) {
       state = state.addTodo(title);
-      _refreshState();
+      _saveTodoList();
     }
   }
 
   void removeTodo(int id) {
     state = state.removeTodo(id);
-    _refreshState();
+    _saveTodoList();
   }
 
   void toggleTodo(int id) {
     state = state.toggleTodo(id);
-    _refreshState();
+    _saveTodoList();
   }
 
   void reorderTodo(int oldIndex, int newIndex) {
     state = state.reorderTodo(oldIndex, newIndex);
-    _refreshState();
+    _saveTodoList();
   }
 }
