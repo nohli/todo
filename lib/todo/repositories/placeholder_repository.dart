@@ -19,7 +19,7 @@ class PlaceholderRepository {
     return TodoList.empty();
   }
 
-  Future<void> saveTodoList(TodoList list) async {
+  Future<void> postTodoList(TodoList list) async {
     final response = await http.post(
       _uri,
       body: list.toJson(),

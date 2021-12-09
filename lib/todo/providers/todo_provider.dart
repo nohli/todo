@@ -62,6 +62,6 @@ class TodosProvider extends StateNotifier<TodoList> {
 
   Future<void> saveTodoList() async {
     await storage.save(state);
-    await repository.saveTodoList(state);
+    await repository.postTodoList(state);
   }
 }
