@@ -52,6 +52,7 @@ void main() {
       ),
     );
   });
+
   testWidgets(
       'Provider loads TodoList from repository, widget displays first entry',
       (tester) async {
