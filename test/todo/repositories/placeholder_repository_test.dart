@@ -28,7 +28,7 @@ void main() {
 
   test('Returns TodoList.empty() if statusCode is not 200', () async {
     final mockClient = MockClient((request) async {
-      return Response('{"todos": []}', 201);
+      return Response('[{}]', 201);
     });
 
     final repository = PlaceholderRepository(mockClient);
