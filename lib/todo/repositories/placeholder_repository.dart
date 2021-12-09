@@ -16,6 +16,12 @@ class PlaceholderRepository {
     if (statusCode == HttpStatus.ok) {
       return TodoList.fromJson(response.body);
     }
+
+    if (kDebugMode) {
+      throw Exception(
+        'Failed to load todo list from api. Statuscode: $statusCode',
+      );
+    }
     return TodoList.empty();
   }
 
