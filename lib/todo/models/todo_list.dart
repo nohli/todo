@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:todo/todo/models/todo_item.dart';
 
 class TodoList {
@@ -7,8 +9,9 @@ class TodoList {
 
   factory TodoList.empty() => TodoList([]);
 
-  factory TodoList.fromJson(List list) {
+  factory TodoList.fromJson(String json) {
     final todos = <TodoItem>[];
+    final list = jsonDecode(json);
 
     for (final item in list) {
       final todo = TodoItem.fromJson(item);
@@ -17,13 +20,13 @@ class TodoList {
     return TodoList(todos);
   }
 
-  List<Map<String, dynamic>> toJson() {
+  String toJson() {
     final list = <Map<String, dynamic>>[];
 
     for (final todo in todos) {
       list.add(todo.toJson());
     }
-    return list;
+    return jsonEncode(list);
   }
 
   TodoList addTodo(String title) {
@@ -47,5 +50,7 @@ class TodoList {
     return this;
   }
 
-  bool isEmpty() => todos.isEmpty;
+  bool get isEmpty => todos.isEmpty;
+
+  bool get isNotEmpty => todos.isNotEmpty;
 }
