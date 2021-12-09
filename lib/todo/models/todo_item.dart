@@ -5,11 +5,13 @@ class TodoItem {
   bool completed;
 
   TodoItem({
-    required this.userId,
-    required this.id,
+    int? userId,
+    int? id,
     required this.title,
-    required this.completed,
-  });
+    bool? completed,
+  })  : userId = userId ?? 1,
+        id = id ?? DateTime.now().millisecondsSinceEpoch,
+        completed = completed ?? false;
 
   TodoItem copyWith(userId, id, title, completed) {
     return TodoItem(
@@ -36,5 +38,9 @@ class TodoItem {
       'title': title,
       'completed': completed,
     };
+  }
+
+  void toggle() {
+    completed = !completed;
   }
 }
