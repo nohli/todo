@@ -10,3 +10,5 @@ This is a very simple todo list app implementing the following features:
 - Sound null safety
 
 State management via [Riverpod](https://pub.dev/packages/riverpod).
+
+<img src="https://user-images.githubusercontent.com/43643339/145316166-a369d7eb-9213-438f-9b50-946597dd6228.png" width="300"> <img src="https://user-images.githubusercontent.com/43643339/145317331-68d9ed93-4af6-46bc-ba8e-7f9fddc80ee7.png" width="300">
