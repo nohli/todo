@@ -30,7 +30,8 @@ class TodoListWidget extends ConsumerWidget {
                 return TodoItemWidget(
                   todos[index],
                   key: ValueKey(id),
-                  provider: provider,
+                  onDismissed: () => provider.removeTodo(id),
+                  onToggled: () => provider.toggleTodo(id),
                 );
               },
               onReorder: (oldIndex, newIndex) {
