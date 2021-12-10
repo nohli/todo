@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
@@ -11,7 +9,7 @@ import '../object_mothers/todo_list_mother.dart';
 
 void main() {
   test('Returns correct TodoList', () async {
-    final json = jsonEncode(TodoListMother.todosMap);
+    final json = TodoListMother.json;
     final expectedTodoList = TodoListMother.todoList;
 
     final mockClient = MockClient((request) async {
