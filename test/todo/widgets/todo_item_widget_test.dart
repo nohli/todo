@@ -35,7 +35,7 @@ void main() {
     expect(checkbox.value, todoItem.completed);
   });
 
-  (testWidgets('VoidCallback onToggled works', (tester) async {
+  testWidgets('VoidCallback onToggled works', (tester) async {
     final todoItem = TodoItem(
       userId: 123,
       id: 321,
@@ -63,5 +63,5 @@ void main() {
 
     final tappedCheckbox = tester.firstWidget(finder) as Checkbox;
     expect(tappedCheckbox.value, !todoItem.completed);
-  }));
+  });
 }
