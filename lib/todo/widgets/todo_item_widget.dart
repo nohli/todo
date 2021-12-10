@@ -19,8 +19,8 @@ class TodoItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// ReorderableListView already shows this icon on desktop
-    /// (see docs of its parameter `buildDefaultDragHandles`)
+    // ReorderableListView already shows this icon on desktop
+    // (see docs of its parameter `buildDefaultDragHandles`)
     final dragHandle = Platform.isIOS || Platform.isAndroid
         ? const Icon(Icons.drag_handle_rounded)
         : const SizedBox();
