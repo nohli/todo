@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:todo/common/widgets/dismissible_widget.dart';
@@ -17,6 +19,12 @@ class TodoItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// ReorderableListView already shows this icon on desktop
+    /// (see docs of its parameter `buildDefaultDragHandles`)
+    final dragHandle = Platform.isIOS || Platform.isAndroid
+        ? const Icon(Icons.drag_handle_rounded)
+        : const SizedBox();
+
     return Card(
       child: DismissibleWidget(
         key: key,
@@ -27,9 +35,7 @@ class TodoItemWidget extends StatelessWidget {
             value: todo.completed,
             onChanged: (_) => onToggled(),
           ),
-          trailing: const Icon(
-            Icons.drag_handle_rounded,
-          ),
+          trailing: dragHandle,
         ),
       ),
     );
