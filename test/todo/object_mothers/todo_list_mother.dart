@@ -2,7 +2,7 @@ import 'package:todo/todo/models/todo_item.dart';
 import 'package:todo/todo/models/todo_list.dart';
 
 class TodoListMother {
-  static const map = [
+  static const todosMap = [
     {
       'userId': 1,
       'id': 1,

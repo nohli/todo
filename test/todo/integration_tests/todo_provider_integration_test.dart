@@ -16,27 +16,33 @@ import '../fake_repositories/fake_hive_repository.dart';
 import '../object_mothers/todo_list_mother.dart';
 
 void main() {
-  late TodoList expectedTodoList;
-  late Widget widget;
+  final String json = jsonEncode(TodoListMother.todosMap);
+  final TodoList expectedTodoList = TodoListMother.todoList;
 
-  setUp(() async {
-    const map = TodoListMother.map;
-    expectedTodoList = TodoListMother.todoList;
+  final Client mockClient = MockClient(
+    (request) async {
+      switch (request.method) {
+        case 'GET':
+          return Response(json, 200);
+        case 'POST':
+          return Response('', 201);
+        default:
+          return Response('', 400);
+      }
+    },
+  );
 
-    final json = jsonEncode(map);
-
-    final mockClient = MockClient((request) async {
-      return Response(json, 200);
-    });
-
-    final providerOverride = TodosProvider(
+  testWidgets(
+      'Provider loads TodoList from storage, widget displays first entry',
+      (tester) async {
+    final provider = TodosProvider(
       storage: FakeHiveRepository(json),
       repository: PlaceholderRepository(mockClient),
     );
 
-    widget = ProviderScope(
+    final widget = ProviderScope(
       overrides: [
-        todosProvider.overrideWithValue(providerOverride),
+        todosProvider.overrideWithValue(provider),
       ],
       child: MaterialApp(
         home: Material(
@@ -51,11 +57,41 @@ void main() {
         ),
       ),
     );
+
+    await tester.pumpWidget(widget);
+    await tester.pumpAndSettle();
+
+    expect(find.byType(TodoListWidget), findsOneWidget);
+
+    expect(find.text(expectedTodoList.todos.first.title), findsOneWidget);
   });
 
   testWidgets(
       'Provider loads TodoList from repository, widget displays first entry',
       (tester) async {
+    final provider = TodosProvider(
+      storage: const FakeHiveRepository(''),
+      repository: PlaceholderRepository(mockClient),
+    );
+
+    final widget = ProviderScope(
+      overrides: [
+        todosProvider.overrideWithValue(provider),
+      ],
+      child: MaterialApp(
+        home: Material(
+          child: Consumer(
+            builder: (_, ref, __) {
+              final provider = ref.read(todosProvider.notifier);
+              provider.loadTodoList();
+
+              return const MyHomePage();
+            },
+          ),
+        ),
+      ),
+    );
+
     await tester.pumpWidget(widget);
     await tester.pumpAndSettle();
 

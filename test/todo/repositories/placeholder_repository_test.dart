@@ -11,10 +11,8 @@ import '../object_mothers/todo_list_mother.dart';
 
 void main() {
   test('Returns correct TodoList', () async {
-    const map = TodoListMother.map;
+    final json = jsonEncode(TodoListMother.todosMap);
     final expectedTodoList = TodoListMother.todoList;
-
-    final json = jsonEncode(map);
 
     final mockClient = MockClient((request) async {
       return Response(json, 200);
