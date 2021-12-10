@@ -61,6 +61,11 @@ class TodoList {
     return TodoList(todos);
   }
 
+  TodoList filterList(String text) {
+    final filteredTodos = todos.where((todo) => todo.title.contains(text));
+    return TodoList(filteredTodos.toList());
+  }
+
   bool get isEmpty => todos.isEmpty;
 
   bool get isNotEmpty => todos.isNotEmpty;
