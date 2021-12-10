@@ -26,7 +26,6 @@ void main() {
     );
 
     expect(find.text(todoItem.title), findsOneWidget);
-    expect(find.byIcon(Icons.drag_handle_rounded), findsOneWidget);
 
     final finder = find.byType(Checkbox);
     expect(finder, findsOneWidget);
