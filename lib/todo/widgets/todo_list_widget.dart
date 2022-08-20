@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:todo/todo/providers/todo_provider.dart';
 import 'package:todo/todo/widgets/add_todo_item_widget.dart';
 import 'package:todo/todo/widgets/todo_item_widget.dart';
 
 class TodoListWidget extends ConsumerWidget {
-  const TodoListWidget({Key? key}) : super(key: key);
+  const TodoListWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

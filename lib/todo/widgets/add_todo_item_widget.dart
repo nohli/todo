@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:todo/todo/providers/todo_provider.dart';
 
 class AddTodoItemWidget extends StatefulWidget {
   final TodosProvider provider;
 
-  const AddTodoItemWidget({required this.provider, Key? key}) : super(key: key);
+  const AddTodoItemWidget({required this.provider, super.key});
 
   @override
   State<AddTodoItemWidget> createState() => _AddTodoItemWidgetState();

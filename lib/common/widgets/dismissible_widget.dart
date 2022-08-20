@@ -7,8 +7,8 @@ class DismissibleWidget extends StatelessWidget {
   const DismissibleWidget({
     required this.child,
     required this.onDismissed,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

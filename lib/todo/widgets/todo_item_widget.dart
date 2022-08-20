@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-
 import 'package:todo/common/widgets/dismissible_widget.dart';
 import 'package:todo/todo/models/todo_item.dart';
 
@@ -14,8 +13,8 @@ class TodoItemWidget extends StatelessWidget {
     this.todo, {
     required this.onDismissed,
     required this.onToggled,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
