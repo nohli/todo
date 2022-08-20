@@ -1,5 +1,4 @@
-import 'package:hive/hive.dart';
-
+import 'package:hive_flutter/adapters.dart';
 import 'package:todo/todo/interfaces/storage_repository.dart';
 import 'package:todo/todo/models/todo_list.dart';
 
