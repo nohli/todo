@@ -32,9 +32,7 @@ class TodoListWidget extends ConsumerWidget {
                   onToggled: () => provider.toggleTodo(id),
                 );
               },
-              onReorder: (oldIndex, newIndex) {
-                provider.reorderTodo(oldIndex, newIndex);
-              },
+              onReorder: provider.reorderTodo,
             ),
           ),
         ],

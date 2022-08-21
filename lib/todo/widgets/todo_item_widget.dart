@@ -27,7 +27,7 @@ class TodoItemWidget extends StatelessWidget {
     return Card(
       child: DismissibleWidget(
         key: key,
-        onDismissed: () => onDismissed(),
+        onDismissed: onDismissed,
         child: ListTile(
           title: Text(todo.title),
           leading: Checkbox(
