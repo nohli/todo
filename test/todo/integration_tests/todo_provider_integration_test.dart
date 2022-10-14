@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
-
 import 'package:todo/main.dart';
-import 'package:todo/todo/providers/todo_provider.dart';
+import 'package:todo/todo/models/todo_list.dart';
+import 'package:todo/todo/providers/todos_provider.dart';
 import 'package:todo/todo/repositories/placeholder_repository.dart';
 import 'package:todo/todo/widgets/todo_list_widget.dart';
 
@@ -32,14 +32,17 @@ void main() {
   testWidgets(
       'Provider loads TodoList from storage, widget displays first entry',
       (tester) async {
-    final provider = TodosProvider(
+    final notifier = TodosProvider(
       storage: FakeHiveRepository(json),
       repository: PlaceholderRepository(mockClient),
     );
 
+    final provider =
+        StateNotifierProvider<TodosProvider, TodoList>((ref) => notifier);
+
     final widget = ProviderScope(
       overrides: [
-        todosProvider.overrideWithValue(provider),
+        todosProvider.overrideWithProvider(provider),
       ],
       child: MaterialApp(
         home: Material(
@@ -66,14 +69,17 @@ void main() {
   testWidgets(
       'Provider loads TodoList from repository, widget displays first entry',
       (tester) async {
-    final provider = TodosProvider(
-      storage: const FakeHiveRepository(''),
+    final notifier = TodosProvider(
+      storage: FakeHiveRepository(json),
       repository: PlaceholderRepository(mockClient),
     );
 
+    final provider =
+        StateNotifierProvider<TodosProvider, TodoList>((ref) => notifier);
+
     final widget = ProviderScope(
       overrides: [
-        todosProvider.overrideWithValue(provider),
+        todosProvider.overrideWithProvider(provider),
       ],
       child: MaterialApp(
         home: Material(

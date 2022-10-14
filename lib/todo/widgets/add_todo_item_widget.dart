@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo/todo/providers/todo_provider.dart';
+import 'package:todo/todo/providers/todos_provider.dart';
 
 class AddTodoItemWidget extends StatefulWidget {
   final TodosProvider provider;
