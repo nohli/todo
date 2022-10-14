@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo/todo/providers/todo_provider.dart';
+import 'package:todo/todo/providers/todos_provider.dart';
 import 'package:todo/todo/widgets/add_todo_item_widget.dart';
 import 'package:todo/todo/widgets/todo_item_widget.dart';
 
