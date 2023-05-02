@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:todo/main.dart';
-import 'package:todo/todo/models/todo_list.dart';
 import 'package:todo/todo/providers/todos_provider.dart';
 import 'package:todo/todo/repositories/placeholder_repository.dart';
 import 'package:todo/todo/widgets/todo_list_widget.dart';
@@ -37,12 +36,9 @@ void main() {
       repository: PlaceholderRepository(mockClient),
     );
 
-    final provider =
-        StateNotifierProvider<TodosProvider, TodoList>((ref) => notifier);
-
     final widget = ProviderScope(
       overrides: [
-        todosProvider.overrideWithProvider(provider),
+        todosProvider.overrideWith((ref) => notifier),
       ],
       child: MaterialApp(
         home: Material(
@@ -74,12 +70,9 @@ void main() {
       repository: PlaceholderRepository(mockClient),
     );
 
-    final provider =
-        StateNotifierProvider<TodosProvider, TodoList>((ref) => notifier);
-
     final widget = ProviderScope(
       overrides: [
-        todosProvider.overrideWithProvider(provider),
+        todosProvider.overrideWith((ref) => notifier),
       ],
       child: MaterialApp(
         home: Material(
