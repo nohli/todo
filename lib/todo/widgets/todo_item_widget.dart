@@ -29,6 +29,7 @@ class TodoItemWidget extends StatelessWidget {
         key: key,
         onDismissed: onDismissed,
         child: ListTile(
+          onTap: onToggled,
           title: Text(todo.title),
           leading: Checkbox(
             value: todo.completed,
