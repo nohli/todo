@@ -10,19 +10,19 @@ class TodoListMother {
         'userId': 1,
         'id': 1,
         'title': 'delectus aut autem',
-        'completed': false,
+        'isCompleted': false,
       },
       {
         'userId': 1,
         'id': 2,
         'title': 'quis ut nam facilis et officia qui',
-        'completed': false,
+        'isCompleted': false,
       },
       {
         'userId': 2,
         'id': 3,
         'title': 'fugiat veniam minus',
-        'completed': true,
+        'isCompleted': true,
       }
     ],
   );
@@ -33,19 +33,19 @@ class TodoListMother {
         userId: 1,
         id: 1,
         title: 'delectus aut autem',
-        completed: false,
+        isCompleted: false,
       ),
       TodoItem(
         userId: 1,
         id: 2,
         title: 'quis ut nam facilis et officia qui',
-        completed: false,
+        isCompleted: false,
       ),
       TodoItem(
         userId: 2,
         id: 3,
         title: 'fugiat veniam minus',
-        completed: true,
+        isCompleted: true,
       ),
     ],
   );

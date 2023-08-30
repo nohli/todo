@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:todo/todo/models/todo_item.dart';
 
 void main() {
@@ -15,7 +14,7 @@ void main() {
 
       expect(todoItem.userId, 1);
       expect(todoItem.title, title);
-      expect(todoItem.completed, false);
+      expect(todoItem.isCompleted, false);
     });
 
     test('with all arguments', () {
@@ -28,19 +27,19 @@ void main() {
         userId: userId,
         id: id,
         title: title,
-        completed: completed,
+        isCompleted: completed,
       );
 
       expect(todoItem.userId, userId);
       expect(todoItem.id, id);
       expect(todoItem.title, title);
-      expect(todoItem.completed, completed);
+      expect(todoItem.isCompleted, completed);
     });
   });
 
   test('Creates TodoItem from Json', () {
     const json =
-        '{"userId": 123, "id": 321, "title": "testTitle", "completed": true}';
+        '{"userId": 123, "id": 321, "title": "testTitle", "isCompleted": true}';
 
     final map = jsonDecode(json);
     final todoItem = TodoItem.fromJson(map);
@@ -48,7 +47,7 @@ void main() {
     expect(todoItem.userId, 123);
     expect(todoItem.id, 321);
     expect(todoItem.title, 'testTitle');
-    expect(todoItem.completed, true);
+    expect(todoItem.isCompleted, true);
   });
 
   test('Creates Json from TodoItem', () {
@@ -56,11 +55,11 @@ void main() {
       userId: 123,
       id: 321,
       title: 'testTitle',
-      completed: true,
+      isCompleted: true,
     );
 
     const expectedJson =
-        '{"userId":123,"id":321,"title":"testTitle","completed":true}';
+        '{"userId":123,"id":321,"title":"testTitle","isCompleted":true}';
 
     final map = todoItem.toJson();
     final json = jsonEncode(map);
@@ -73,10 +72,10 @@ void main() {
       title: 'testTitle',
     );
 
-    expect(todoItem.completed, false);
+    expect(todoItem.isCompleted, false);
 
     todoItem.toggle();
 
-    expect(todoItem.completed, true);
+    expect(todoItem.isCompleted, true);
   });
 }

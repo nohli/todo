@@ -32,7 +32,7 @@ class TodoItemWidget extends StatelessWidget {
           onTap: onToggled,
           title: Text(todo.title),
           leading: Checkbox(
-            value: todo.completed,
+            value: todo.isCompleted,
             onChanged: (_) => onToggled(),
           ),
           trailing: dragHandle,
