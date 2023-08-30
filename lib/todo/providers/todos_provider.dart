@@ -5,20 +5,20 @@ import 'package:todo/todo/models/todo_list.dart';
 import 'package:todo/todo/repositories/hive_repository.dart';
 import 'package:todo/todo/repositories/placeholder_repository.dart';
 
-final todosProvider = StateNotifierProvider<TodosProvider, TodoList>(
+final todosProvider = StateNotifierProvider<TodosNotifier, TodoList>(
   (ref) {
-    return TodosProvider(
+    return TodosNotifier(
       storage: HiveRepository(),
       repository: PlaceholderRepository(Client()),
     );
   },
 );
 
-class TodosProvider extends StateNotifier<TodoList> {
+class TodosNotifier extends StateNotifier<TodoList> {
   final StorageRepository _storage;
   final PlaceholderRepository _repository;
 
-  TodosProvider({required storage, required repository})
+  TodosNotifier({required storage, required repository})
       : _storage = storage,
         _repository = repository,
         super(TodoList.empty());

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/todo/providers/todos_provider.dart';
 
 class AddTodoItemWidget extends StatefulWidget {
-  final TodosProvider provider;
+  final TodosNotifier provider;
 
   const AddTodoItemWidget({required this.provider, super.key});
 

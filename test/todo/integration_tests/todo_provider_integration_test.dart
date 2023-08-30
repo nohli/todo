@@ -31,7 +31,7 @@ void main() {
   testWidgets(
       'Provider loads TodoList from storage, widget displays first entry',
       (tester) async {
-    final notifier = TodosProvider(
+    final notifier = TodosNotifier(
       storage: FakeHiveRepository(json),
       repository: PlaceholderRepository(mockClient),
     );
@@ -65,7 +65,7 @@ void main() {
   testWidgets(
       'Provider loads TodoList from repository, widget displays first entry',
       (tester) async {
-    final notifier = TodosProvider(
+    final notifier = TodosNotifier(
       storage: FakeHiveRepository(json),
       repository: PlaceholderRepository(mockClient),
     );
