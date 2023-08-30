@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
 import 'package:todo/todo/models/todo_item.dart';
 
 class TodoList {
@@ -30,11 +31,13 @@ class TodoList {
     return jsonEncode(list);
   }
 
+  @useResult
   TodoList addTodo(String title) {
     final todo = TodoItem(title: title);
     return TodoList([todo, ...todos]);
   }
 
+  @useResult
   TodoList removeTodo(int id) {
     final todos = List<TodoItem>.from(this.todos);
     final index = todos.indexWhere((todo) => todo.id == id);
@@ -52,6 +55,7 @@ class TodoList {
     return TodoList(todos);
   }
 
+  @useResult
   TodoList reorderTodo(int oldIndex, int newIndex) {
     final todos = List<TodoItem>.from(this.todos);
     final todo = todos.removeAt(oldIndex);
@@ -62,6 +66,7 @@ class TodoList {
     return TodoList(todos);
   }
 
+  @useResult
   TodoList filterList(String text) {
     final filteredTodos = todos.where((todo) => todo.title.contains(text));
     return TodoList(filteredTodos.toList());
