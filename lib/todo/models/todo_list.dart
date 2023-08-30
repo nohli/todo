@@ -6,7 +6,7 @@ import 'package:todo/todo/models/todo_item.dart';
 class TodoList {
   final List<TodoItem> todos;
 
-  TodoList(this.todos);
+  TodoList(List<TodoItem> todos) : todos = List.unmodifiable(todos);
 
   factory TodoList.empty() => TodoList([]);
 
@@ -32,8 +32,7 @@ class TodoList {
 
   TodoList addTodo(String title) {
     final todo = TodoItem(title: title);
-    todos.insert(0, todo);
-    return TodoList(todos);
+    return TodoList([todo, ...todos]);
   }
 
   TodoList removeTodo(int id) {
