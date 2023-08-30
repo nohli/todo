@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
-
 import 'package:todo/todo/models/todo_list.dart';
 
 class PlaceholderRepository {
