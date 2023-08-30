@@ -52,6 +52,7 @@ class TodoList {
   }
 
   TodoList reorderTodo(int oldIndex, int newIndex) {
+    final todos = List<TodoItem>.from(this.todos);
     final todo = todos.removeAt(oldIndex);
     if (newIndex > oldIndex) {
       newIndex--;
