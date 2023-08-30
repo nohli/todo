@@ -34,7 +34,7 @@ void main() {
   });
 
   testWidgets('VoidCallback onToggled works', (tester) async {
-    final todoItem = TodoItem(
+    var todoItem = TodoItem(
       userId: 123,
       id: 321,
       title: 'Todo Item',
@@ -47,7 +47,7 @@ void main() {
           child: TodoItemWidget(
             todoItem,
             onDismissed: () {},
-            onToggled: () => todoItem.completed = !todoItem.completed,
+            onToggled: () => todoItem = todoItem.toggle(),
           ),
         ),
       ),

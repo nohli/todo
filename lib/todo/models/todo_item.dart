@@ -1,11 +1,17 @@
+import 'package:meta/meta.dart';
+
 class TodoItem {
   final int userId;
   final int id;
-  String title;
-  bool completed;
+  final String title;
+  final bool completed;
 
-  TodoItem({int? userId, int? id, required this.title, bool? completed})
-      : userId = userId ?? 1,
+  TodoItem({
+    int? userId,
+    int? id,
+    required this.title,
+    bool? completed,
+  })  : userId = userId ?? 1,
         id = id ?? DateTime.now().millisecondsSinceEpoch,
         completed = completed ?? false;
 
@@ -27,7 +33,12 @@ class TodoItem {
     };
   }
 
-  TodoItem copyWith(userId, id, title, completed) {
+  TodoItem copyWith({
+    int? userId,
+    int? id,
+    String? title,
+    bool? completed,
+  }) {
     return TodoItem(
       userId: userId ?? this.userId,
       id: id ?? this.id,
@@ -36,7 +47,8 @@ class TodoItem {
     );
   }
 
-  void toggle() => completed = !completed;
+  @useResult
+  TodoItem toggle() => copyWith(completed: !completed);
 
   @override
   bool operator ==(Object other) =>

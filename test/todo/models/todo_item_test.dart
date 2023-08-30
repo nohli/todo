@@ -74,8 +74,8 @@ void main() {
 
     expect(todoItem.completed, false);
 
-    todoItem.toggle();
+    final toggledTodoItem = todoItem.toggle();
 
-    expect(todoItem.completed, true);
+    expect(toggledTodoItem.completed, true);
   });
 }

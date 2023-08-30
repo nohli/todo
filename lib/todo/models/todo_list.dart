@@ -45,10 +45,13 @@ class TodoList {
     return TodoList(todos);
   }
 
+  @useResult
   TodoList toggleTodo(int id) {
-    for (final todo in todos) {
+    final todos = List<TodoItem>.from(this.todos);
+    for (int index = 0; index < todos.length; index++) {
+      final todo = todos[index];
       if (todo.id == id) {
-        todo.toggle();
+        todos[index] = todo.toggle();
         break;
       }
     }
