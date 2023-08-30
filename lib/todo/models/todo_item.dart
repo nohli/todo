@@ -2,19 +2,19 @@ class TodoItem {
   final int userId;
   final int id;
   String title;
-  bool isCompleted;
+  bool completed;
 
-  TodoItem({int? userId, int? id, required this.title, bool? isCompleted})
+  TodoItem({int? userId, int? id, required this.title, bool? completed})
       : userId = userId ?? 1,
         id = id ?? DateTime.now().millisecondsSinceEpoch,
-        isCompleted = isCompleted ?? false;
+        completed = completed ?? false;
 
   factory TodoItem.fromJson(Map<String, dynamic> map) {
     return TodoItem(
       userId: map['userId'] as int,
       id: map['id'] as int,
       title: map['title'] as String,
-      isCompleted: map['isCompleted'] as bool,
+      completed: map['completed'] as bool,
     );
   }
 
@@ -23,20 +23,20 @@ class TodoItem {
       'userId': userId,
       'id': id,
       'title': title,
-      'isCompleted': isCompleted,
+      'completed': completed,
     };
   }
 
-  TodoItem copyWith(userId, id, title, isCompleted) {
+  TodoItem copyWith(userId, id, title, completed) {
     return TodoItem(
       userId: userId ?? this.userId,
       id: id ?? this.id,
       title: title ?? this.title,
-      isCompleted: isCompleted ?? this.isCompleted,
+      completed: completed ?? this.completed,
     );
   }
 
-  void toggle() => isCompleted = !isCompleted;
+  void toggle() => completed = !completed;
 
   @override
   bool operator ==(Object other) =>
@@ -46,9 +46,9 @@ class TodoItem {
           userId == other.userId &&
           id == other.id &&
           title == other.title &&
-          isCompleted == other.isCompleted;
+          completed == other.completed;
 
   @override
   int get hashCode =>
-      userId.hashCode ^ id.hashCode ^ title.hashCode ^ isCompleted.hashCode;
+      userId.hashCode ^ id.hashCode ^ title.hashCode ^ completed.hashCode;
 }

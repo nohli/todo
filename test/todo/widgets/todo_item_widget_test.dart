@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+
 import 'package:todo/todo/models/todo_item.dart';
 import 'package:todo/todo/widgets/todo_item_widget.dart';
 
@@ -9,7 +10,7 @@ void main() {
       userId: 123,
       id: 321,
       title: 'Todo Item',
-      isCompleted: true,
+      completed: true,
     );
 
     await tester.pumpWidget(
@@ -30,7 +31,7 @@ void main() {
     expect(finder, findsOneWidget);
 
     final checkbox = tester.firstWidget(finder) as Checkbox;
-    expect(checkbox.value, todoItem.isCompleted);
+    expect(checkbox.value, todoItem.completed);
   });
 
   testWidgets('VoidCallback onToggled works', (tester) async {
@@ -38,7 +39,7 @@ void main() {
       userId: 123,
       id: 321,
       title: 'Todo Item',
-      isCompleted: false,
+      completed: false,
     );
 
     await tester.pumpWidget(
@@ -47,7 +48,7 @@ void main() {
           child: TodoItemWidget(
             todoItem,
             onDismissed: () {},
-            onToggled: () => todoItem.isCompleted = !todoItem.isCompleted,
+            onToggled: () => todoItem.completed = !todoItem.completed,
           ),
         ),
       ),
@@ -55,11 +56,11 @@ void main() {
 
     final finder = find.byType(Checkbox);
     final checkbox = tester.firstWidget(finder) as Checkbox;
-    expect(checkbox.value, todoItem.isCompleted);
+    expect(checkbox.value, todoItem.completed);
 
     await tester.tap(finder);
 
     final tappedCheckbox = tester.firstWidget(finder) as Checkbox;
-    expect(tappedCheckbox.value, !todoItem.isCompleted);
+    expect(tappedCheckbox.value, !todoItem.completed);
   });
 }
