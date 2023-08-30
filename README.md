@@ -11,6 +11,7 @@ This is a simple app implementing the following features:
 - Drag entries to manually sort
 - Light mode/dark mode
 - Sound null safety
+- Immutable data classes
 
 State management via [Riverpod](https://pub.dev/packages/riverpod).
 
